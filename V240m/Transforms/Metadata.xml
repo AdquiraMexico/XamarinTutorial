@@ -1,0 +1,31 @@
+﻿<metadata>
+	<add-node path="/api/package[@name='mx.digitalcoaster.socketexample.Async']">
+		<class abstract="false" deprecated="not deprecated" final="false" name="AsyncClosePort" static="true" visibility="public" extends="java.lang.Object">
+		</class>
+
+		<class abstract="false" deprecated="not deprecated" final="false" name="AsyncFinishTransaction" static="true" visibility="public" extends="java.lang.Object">
+		</class>
+
+		<class abstract="false" deprecated="not deprecated" final="false" name="AsyncLoadKey" static="true" visibility="public" extends="java.lang.Object">
+		</class>
+
+		<class abstract="false" deprecated="not deprecated" final="false" name="AsyncPrint" static="true" visibility="public" extends="java.lang.Object">
+		</class>
+
+		<class abstract="false" deprecated="not deprecated" final="false" name="AsyncPrintScreen" static="true" visibility="public" extends="java.lang.Object">
+		</class>
+
+		<class abstract="false" deprecated="not deprecated" final="false" name="AsyncRandomKey" static="true" visibility="public" extends="java.lang.Object">
+		</class>
+
+		<class abstract="false" deprecated="not deprecated" final="false" name="AsyncRead" static="true" visibility="public" extends="java.lang.Object">
+		</class>
+
+		<class abstract="false" deprecated="not deprecated" final="false" name="AsyncReverse22" static="true" visibility="public" extends="java.lang.Object">
+		</class>
+
+		
+	</add-node>
+
+	
+</metadata>
