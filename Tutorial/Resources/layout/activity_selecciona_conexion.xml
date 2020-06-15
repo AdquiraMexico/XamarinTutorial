@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:orientation="vertical"
+android:background="@android:color/white">
+
+
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <LinearLayout
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <TextView
+            android:text="Conexión"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:textColor="@android:color/black"
+            android:textSize="34dp"
+            android:gravity="left"
+            android:layout_marginBottom="10dp"/>
+
+        <TextView
+            android:text="Elige el tipo de conexión"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:textSize="24dp"
+            android:gravity="left"
+            android:layout_marginBottom="20.0dp" />
+
+        <Button
+            android:id="@+id/wifi"
+            android:text="WI-FI"
+            android:textSize="17dp"
+            android:textColor="@android:color/white"
+            android:layout_marginTop="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_ripple"/>
+
+        <Button
+            android:id="@+id/bluetooth"
+            android:text="BLUETOOTH"
+            android:textSize="17dp"
+            android:textColor="@android:color/white"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_ripple"/>
+
+
+
+    </LinearLayout>
+
+</ScrollView>
+
+</LinearLayout>

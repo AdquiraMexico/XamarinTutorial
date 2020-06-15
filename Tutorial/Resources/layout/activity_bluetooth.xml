@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:orientation="vertical"
+android:background="@android:color/white">
+
+
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <LinearLayout
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <TextView
+            android:text="Conexión Bluetooth"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textColor="@android:color/black"
+            android:textSize="34dp"
+            android:gravity="left"
+            android:layout_marginBottom="10dp"/>
+
+        <TextView
+            android:text="Antes de continuar, configura tu pinpad en modo visible"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:textSize="24dp"
+            android:gravity="left"
+            android:layout_marginBottom="20.0dp" />
+
+        <Button
+            android:id="@+id/btnOnOff"
+            android:text="ON/OFF"
+            android:textSize="17dp"
+            android:textColor="@android:color/white"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_ripple"/>
+
+        <Button
+            android:id="@+id/btnDiscoverable"
+            android:text="Hacer visible el dispositivo"
+            android:textSize="17dp"
+            android:textColor="@android:color/white"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_ripple"/>
+
+        <Button
+            android:id="@+id/btnFindUnpairedDevices"
+            android:text="Buscar nuevos dispositivos"
+            android:textSize="17dp"
+            android:textColor="@android:color/white"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_ripple"/>
+
+        <Button
+            android:id="@+id/btnFindPairedDevices"
+            android:text="Buscar dispositivos pareados"
+            android:textSize="17dp"
+            android:textColor="@android:color/white"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_ripple"/>
+
+
+
+    </LinearLayout>
+
+</ScrollView>
+
+<ListView
+    android:id="@+id/lvDevicesUnpaired"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="40dp"
+    android:layout_marginRight="40dp"
+    android:layout_marginTop="20dp"
+    android:divider="@null"
+    android:dividerHeight="0dp"/>
+
+<EditText
+    android:layout_width="250dp"
+    android:layout_height="wrap_content"
+    android:hint="Enter Text Here"
+    android:layout_alignParentStart="true"
+    android:id="@+id/editText"/>
+
+<Button
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="SEND"
+    android:id="@+id/btnSend"
+    android:layout_toRightOf="@+id/editText"/>
+
+
+</LinearLayout>
