@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Tutorial.Comandos"
+    android:orientation="vertical"
+    android:background="@android:color/white">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <LinearLayout
+            android:layout_marginLeft="20.0dp"
+            android:layout_marginRight="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <TextView
+                android:text="Comandos de interacción"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:textColor="@android:color/black"
+                android:textSize="24dp"
+                android:gravity="center_horizontal"
+                android:layout_marginBottom="45.0dp"/>
+
+            <TextView
+                android:text="Print Screen:"
+                android:textColor="@color/colorAccent"
+                android:textSize="16sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left" />
+
+            <Button
+                android:id="@+id/commandz2"
+                android:text="Invocar"
+                android:textSize="17dp"
+                android:textColor="@android:color/white"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="25dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_ripple" />
+
+            <TextView
+                android:text="Read:"
+                android:textColor="@color/colorAccent"
+                android:textSize="16sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left" />
+
+            <Button
+                android:id="@+id/commandc51"
+                android:text="Invocar"
+                android:textSize="17dp"
+                android:textColor="@android:color/white"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="25dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_ripple"/>
+
+            <TextView
+                android:text="Finish Transaction:"
+                android:textColor="@color/colorAccent"
+                android:textSize="16sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left" />
+
+            <Button
+                android:id="@+id/commandc54"
+                android:text="Invocar"
+                android:textSize="17dp"
+                android:textColor="@android:color/white"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="25dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_ripple"/>
+
+            <TextView
+                android:text="Random Key:"
+                android:textColor="@color/colorAccent"
+                android:textSize="16sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"/>
+
+            <Button
+                android:id="@+id/commandz10"
+                android:text="Invocar"
+                android:textSize="17dp"
+                android:textColor="@android:color/white"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="25dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_ripple"/>
+
+            <TextView
+                android:text="Load Key:"
+                android:textColor="@color/colorAccent"
+                android:textSize="16sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"/>
+
+            <Button
+                android:id="@+id/commandz11"
+                android:text="Invocar"
+                android:textSize="17dp"
+                android:textColor="@android:color/white"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="25dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_ripple"/>
+
+            <TextView
+                android:text="Print:"
+                android:textColor="@color/colorAccent"
+                android:textSize="16sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"/>
+
+            <Button
+                android:id="@+id/imprimir"
+                android:text="Invocar"
+                android:textSize="17dp"
+                android:textColor="@android:color/white"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="25dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_ripple"/>
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

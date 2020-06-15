@@ -17,7 +17,7 @@ using System.Collections;
 namespace Tutorial
 {
     [Activity(Label = "WiFi")]
-    public partial class WiFi : Activity//, IAsyncPorts
+    public partial class WiFi : Activity//, AsyncPort
     {
         internal static Context ActivityContext { get; private set; }
 
@@ -35,8 +35,8 @@ namespace Tutorial
         {
             if (p0)
             {
-                /*var intent = new Intent(this, typeof(Comandos));
-                StartActivity(intent);*/
+                var intent = new Intent(this, typeof(Comandos));
+                StartActivity(intent);
             }
             else
             {
@@ -53,14 +53,14 @@ namespace Tutorial
             ip = FindViewById<EditText>(Resource.Id.ip);
             port = FindViewById<EditText>(Resource.Id.port);
 
-            connect = FindViewById<Button>(Resource.Id.bluetooth);
+            connect = FindViewById<Button>(Resource.Id.connect);
 
             connect.Click += delegate {
-                Toast.MakeText(Application.Context, "Error de conexion", ToastLength.Short).Show();
-                /*IAsyncPorts asyncPorts = new WiFi();
+                Toast.MakeText(Application.Context, ip.Text, ToastLength.Short).Show();
+                IAsyncPorts asyncPorts = new WiFi();
 
-                AsyncOpenPort asyncOpenPort = new AsyncOpenPort( asyncPorts, ip.Text, port.Text);
-                asyncOpenPort.Execute();*/
+                //AsyncOpenPort asyncOpenPort = new AsyncOpenPort( asyncPorts, ip.Text, port.Text);
+                //asyncOpenPort.Execute();*/
             };
 
         }

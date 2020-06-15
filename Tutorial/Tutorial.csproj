@@ -89,6 +89,7 @@
     <Compile Include="SeleccionaConexion.cs" />
     <Compile Include="WiFi.cs" />
     <Compile Include="Bluetooth.cs" />
+    <Compile Include="Comandos.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -151,6 +152,10 @@
       </SubType>
       <Generator>
       </Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\activity_comandos.xml">
+      <SubType></SubType>
+      <Generator></Generator>
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
