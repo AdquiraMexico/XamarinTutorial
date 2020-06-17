@@ -23,12 +23,10 @@
 
 		<class abstract="false" deprecated="not deprecated" final="false" name="AsyncReverse22" static="true" visibility="public" extends="java.lang.Object">
 		</class>
-        
-        <class abstract="false" deprecated="not deprecated" final="false" name="AsyncOpenPort" static="true" visibility="public" extends="java.lang.Object">
-            <attr path="/api/package[@name='mx.digitalcoaster.socketexample.Async']/class[@name='AsyncOpenPort']/constructor[@name='AsyncOpenPort' and count(parameter)=3 and parameter[1][@type='AsyncPort'] and parameter[2][@type='java.lang.String'] and parameter[3][@type='java.lang.String']]/parameter[3]" name="managedType">AsyncOpenPort</attr>
-        </class>
 
-		
+		<class abstract="false" deprecated="not deprecated" final="false" name="AsyncOpenPort" static="true" visibility="public" extends="java.lang.Object">
+		</class>
+
 	</add-node>
     
     

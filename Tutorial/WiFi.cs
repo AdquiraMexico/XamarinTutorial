@@ -10,14 +10,15 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
-//using MX.Digitalcoaster.Socketexample.Async;
 using System.Runtime.Remoting.Messaging;
 using System.Collections;
+using MX.Digitalcoaster.Socketexample.Async;
+using MX.Digitalcoaster.Socketexample.Xamarin;
 
 namespace Tutorial
 {
     [Activity(Label = "WiFi")]
-    public partial class WiFi : Activity//, AsyncPort
+    public partial class WiFi : Activity, IAsyncPorts
     {
         internal static Context ActivityContext { get; private set; }
 
@@ -56,11 +57,8 @@ namespace Tutorial
             connect = FindViewById<Button>(Resource.Id.connect);
 
             connect.Click += delegate {
-                Toast.MakeText(Application.Context, ip.Text, ToastLength.Short).Show();
-                IAsyncPorts asyncPorts = new WiFi();
 
-                //AsyncOpenPort asyncOpenPort = new AsyncOpenPort( asyncPorts, ip.Text, port.Text);
-                //asyncOpenPort.Execute();*/
+                Methods.OpenPort(this, ip.Text, port.Text);
             };
 
         }
