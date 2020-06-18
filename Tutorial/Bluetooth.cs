@@ -32,9 +32,20 @@ namespace Tutorial
         string[] devices;
         ArrayAdapter myAdapter;
 
+        //Inicialización
+        MX.Digitalcoaster.Socketexample.Xamarin.Bluetooth bluetooth;
+
         public void FinishBluetoothConnection(bool p0)
         {
-            throw new NotImplementedException();
+            if (p0)
+            {
+                var intent = new Intent(this, typeof(Comandos));
+                StartActivity(intent);
+            }
+            else
+            {
+                Toast.MakeText(Application.Context, "Error de conexion", ToastLength.Short).Show();
+            }
         }
 
         public void SearchPairedDevices(IList<BluetoothDevice> p0)
@@ -99,9 +110,11 @@ namespace Tutorial
             lvDevices.ItemClick += (s, e) => {
                 var t = devices[e.Position];
                 Toast.MakeText(Application.Context, t, ToastLength.Short).Show();
+                int position = e.Position;
+                bluetooth.MakeBinding(position);
             };
 
-            MX.Digitalcoaster.Socketexample.Xamarin.Bluetooth bluetooth = new MX.Digitalcoaster.Socketexample.Xamarin.Bluetooth();
+            bluetooth = new MX.Digitalcoaster.Socketexample.Xamarin.Bluetooth();
             bluetooth.Initializate(this, this, this, this);
 
             permissions.Click += delegate
