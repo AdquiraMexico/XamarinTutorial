@@ -42,6 +42,16 @@ android:background="@android:color/white">
             android:layout_marginBottom="20.0dp" />
 
         <Button
+            android:id="@+id/permissions"
+            android:text="Otorgar permisos"
+            android:textSize="17dp"
+            android:textColor="@android:color/white"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_ripple"/>
+
+        <Button
             android:id="@+id/btnOnOff"
             android:text="ON/OFF"
             android:textSize="17dp"

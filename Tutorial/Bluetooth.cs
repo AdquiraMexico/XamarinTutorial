@@ -16,17 +16,21 @@ using Java.Util;
 using MX.Digitalcoaster.Socketexample.Async;
 using MX.Digitalcoaster.Socketexample.Xamarin;
 using MX.Digitalcoaster.Socketexample.Xamarin.Adaptator;
+using Android.Support.V4.Content;
+using Android;
+using Android.Content.PM;
 
 namespace Tutorial
 {
     [Activity(Label = "Bluetooth")]
     public class Bluetooth : Activity, IBluetoothConnection, IBluetoothPairedDevices, IBluetoothUnpairedDevices
     {
-        Button btnOnOff, btnDiscoverable, btnFindUnpairedDevices, btnFindPairedDevices;
+        Button btnOnOff, btnDiscoverable, btnFindUnpairedDevices, btnFindPairedDevices, permissions;
         ListView lvDevices;
 
         //Array
         string[] devices;
+        ArrayAdapter myAdapter;
 
         public void FinishBluetoothConnection(bool p0)
         {
@@ -42,11 +46,15 @@ namespace Tutorial
             {
                 for (int i = 0; i < p0.Count; i++)
                 {
-                    devices[i] = "Dispositivo:" + p0[i].Name + ", p0[i].Address";
+                    devices[i] = "Dispositivo:" + p0[i].Name + ", " + p0[i].Address;
                     Console.WriteLine(devices[i]);
 
                 }
             }
+
+            myAdapter = new ArrayAdapter(this, Android.Resource.Layout.SimpleListItem1, devices);
+            lvDevices.SetAdapter(myAdapter);
+            myAdapter.NotifyDataSetChanged();
         }
 
         public void SearchUnpairedDevices(IList<BluetoothDevice> p0)
@@ -58,11 +66,15 @@ namespace Tutorial
             {
                 for (int i = 0; i < p0.Count; i++)
                 {
-                    devices[i] = "Dispositivo:" + p0[i].Name + ", p0[i].Address";
+                    devices[i] = "Dispositivo:" + p0[i].Name + ", "+p0[i].Address;
                     Console.WriteLine(devices[i]);
 
                 }
             }
+
+            myAdapter = new ArrayAdapter(this, Android.Resource.Layout.SimpleListItem1, devices);
+            lvDevices.SetAdapter(myAdapter);
+            myAdapter.NotifyDataSetChanged();
         }
 
         protected override void OnCreate(Bundle savedInstanceState)
@@ -75,11 +87,14 @@ namespace Tutorial
             btnDiscoverable = FindViewById<Button>(Resource.Id.btnDiscoverable);
             btnFindUnpairedDevices = FindViewById<Button>(Resource.Id.btnFindUnpairedDevices);
             btnFindPairedDevices = FindViewById<Button>(Resource.Id.btnFindPairedDevices);
+            //permissions = FindViewById<Button>(Resource.Id.permissions); 
             lvDevices = FindViewById<ListView>(Resource.Id.lvDevicesUnpaired);
 
-            devices = new string[] { "Sin resultados" , "Mas datos"};
+            devices = new string[] {"Esperando"};
 
-            lvDevices.Adapter = new ArrayAdapter(this, Android.Resource.Layout.SimpleListItem1, devices);
+
+            myAdapter = new ArrayAdapter(this, Android.Resource.Layout.SimpleListItem1, devices);
+            lvDevices.SetAdapter(myAdapter);
 
             lvDevices.ItemClick += (s, e) => {
                 var t = devices[e.Position];
@@ -91,7 +106,8 @@ namespace Tutorial
 
             btnOnOff.Click += delegate
             {
-                bluetooth.OnOff();
+                //bluetooth.OnOff();
+                checkBTPermissions();
             };
 
             btnDiscoverable.Click += delegate
@@ -108,8 +124,29 @@ namespace Tutorial
             {
                 bluetooth.FindPairedDevices();
             };
+        }
 
+        /**
+         * This method is required for all devices running API23+
+         * Android must programmatically check the permissions for bluetooth. Putting the proper permissions
+         * in the manifest is not enough.
+         * <p>
+         * NOTE: This will only execute on versions > LOLLIPOP because it is not needed otherwise.
+         */
+        private void checkBTPermissions()
+        {
+            if (Build.VERSION.SdkInt > BuildVersionCodes.Lollipop)
+            {
+                if ((ContextCompat.CheckSelfPermission(this, Manifest.Permission.AccessFineLocation) == (int)Permission.Granted) && (ContextCompat.CheckSelfPermission(this, Manifest.Permission.AccessCoarseLocation) == (int)Permission.Granted))
+                {
 
+                    this.RequestPermissions(new String[] { Manifest.Permission.AccessFineLocation, Manifest.Permission.AccessCoarseLocation }, 1001); //Any number
+                }
+            }
+            else
+            {
+                Log.Info("Bluetooth", "checkBTPermissions: No need to check permissions. SDK version < LOLLIPOP.");
+            }
         }
     }
         
