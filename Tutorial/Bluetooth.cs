@@ -87,7 +87,7 @@ namespace Tutorial
             btnDiscoverable = FindViewById<Button>(Resource.Id.btnDiscoverable);
             btnFindUnpairedDevices = FindViewById<Button>(Resource.Id.btnFindUnpairedDevices);
             btnFindPairedDevices = FindViewById<Button>(Resource.Id.btnFindPairedDevices);
-            //permissions = FindViewById<Button>(Resource.Id.permissions); 
+            permissions = FindViewById<Button>(Resource.Id.permissions); 
             lvDevices = FindViewById<ListView>(Resource.Id.lvDevicesUnpaired);
 
             devices = new string[] {"Esperando"};
@@ -104,10 +104,14 @@ namespace Tutorial
             MX.Digitalcoaster.Socketexample.Xamarin.Bluetooth bluetooth = new MX.Digitalcoaster.Socketexample.Xamarin.Bluetooth();
             bluetooth.Initializate(this, this, this, this);
 
+            permissions.Click += delegate
+            {
+                checkBTPermissions();
+            };
+
             btnOnOff.Click += delegate
             {
-                //bluetooth.OnOff();
-                checkBTPermissions();
+                bluetooth.OnOff();
             };
 
             btnDiscoverable.Click += delegate
