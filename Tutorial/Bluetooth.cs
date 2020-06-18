@@ -23,7 +23,10 @@ namespace Tutorial
     public class Bluetooth : Activity, IBluetoothConnection, IBluetoothPairedDevices, IBluetoothUnpairedDevices
     {
         Button btnOnOff, btnDiscoverable, btnFindUnpairedDevices, btnFindPairedDevices;
-        ListView lvDevicesUnpaired;
+        ListView lvDevices;
+
+        //Array
+        string[] devices;
 
         public void FinishBluetoothConnection(bool p0)
         {
@@ -33,12 +36,15 @@ namespace Tutorial
         public void SearchPairedDevices(IList<BluetoothDevice> p0)
         {
             Console.WriteLine("PAIRED DEVICES");
+
             if (p0.Count > 0)
+                devices = new String[p0.Count];
             {
                 for (int i = 0; i < p0.Count; i++)
                 {
-                    Console.WriteLine("Dispositivo:"+p0[i].Name);
-                    Console.WriteLine("Dispositivo:" + p0[i].Address);
+                    devices[i] = "Dispositivo:" + p0[i].Name + ", p0[i].Address";
+                    Console.WriteLine(devices[i]);
+
                 }
             }
         }
@@ -46,12 +52,15 @@ namespace Tutorial
         public void SearchUnpairedDevices(IList<BluetoothDevice> p0)
         {
             Console.WriteLine("UNPAIRED DEVICES");
+
             if (p0.Count > 0)
+                devices = new String[p0.Count];
             {
                 for (int i = 0; i < p0.Count; i++)
                 {
-                    Console.WriteLine("Dispositivo:" + p0[i].Name);
-                    Console.WriteLine("Dispositivo:" + p0[i].Address);
+                    devices[i] = "Dispositivo:" + p0[i].Name + ", p0[i].Address";
+                    Console.WriteLine(devices[i]);
+
                 }
             }
         }
@@ -66,11 +75,19 @@ namespace Tutorial
             btnDiscoverable = FindViewById<Button>(Resource.Id.btnDiscoverable);
             btnFindUnpairedDevices = FindViewById<Button>(Resource.Id.btnFindUnpairedDevices);
             btnFindPairedDevices = FindViewById<Button>(Resource.Id.btnFindPairedDevices);
-            lvDevicesUnpaired = FindViewById<ListView>(Resource.Id.lvDevicesUnpaired);
+            lvDevices = FindViewById<ListView>(Resource.Id.lvDevicesUnpaired);
+
+            devices = new string[] { "Sin resultados" , "Mas datos"};
+
+            lvDevices.Adapter = new ArrayAdapter(this, Android.Resource.Layout.SimpleListItem1, devices);
+
+            lvDevices.ItemClick += (s, e) => {
+                var t = devices[e.Position];
+                Toast.MakeText(Application.Context, t, ToastLength.Short).Show();
+            };
 
             MX.Digitalcoaster.Socketexample.Xamarin.Bluetooth bluetooth = new MX.Digitalcoaster.Socketexample.Xamarin.Bluetooth();
             bluetooth.Initializate(this, this, this, this);
-
 
             btnOnOff.Click += delegate
             {
