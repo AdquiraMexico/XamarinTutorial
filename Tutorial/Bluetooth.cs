@@ -5,21 +5,56 @@ using System.Linq;
 using System.Text;
 
 using Android.App;
+using Android.Bluetooth;
 using Android.Content;
+using Android.Util;
 using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using Java.Util;
 using MX.Digitalcoaster.Socketexample.Async;
 using MX.Digitalcoaster.Socketexample.Xamarin;
+using MX.Digitalcoaster.Socketexample.Xamarin.Adaptator;
 
 namespace Tutorial
 {
     [Activity(Label = "Bluetooth")]
-    public class Bluetooth : Activity, IBluetoothConnection
+    public class Bluetooth : Activity, IBluetoothConnection, IBluetoothPairedDevices, IBluetoothUnpairedDevices
     {
         Button btnOnOff, btnDiscoverable, btnFindUnpairedDevices, btnFindPairedDevices;
-        MX.Digitalcoaster.Socketexample.Xamarin.Bluetooth bluetooth;
+        ListView lvDevicesUnpaired;
+
+        public void FinishBluetoothConnection(bool p0)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SearchPairedDevices(IList<BluetoothDevice> p0)
+        {
+            Console.WriteLine("PAIRED DEVICES");
+            if (p0.Count > 0)
+            {
+                for (int i = 0; i < p0.Count; i++)
+                {
+                    Console.WriteLine("Dispositivo:"+p0[i].Name);
+                    Console.WriteLine("Dispositivo:" + p0[i].Address);
+                }
+            }
+        }
+
+        public void SearchUnpairedDevices(IList<BluetoothDevice> p0)
+        {
+            Console.WriteLine("UNPAIRED DEVICES");
+            if (p0.Count > 0)
+            {
+                for (int i = 0; i < p0.Count; i++)
+                {
+                    Console.WriteLine("Dispositivo:" + p0[i].Name);
+                    Console.WriteLine("Dispositivo:" + p0[i].Address);
+                }
+            }
+        }
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -31,40 +66,34 @@ namespace Tutorial
             btnDiscoverable = FindViewById<Button>(Resource.Id.btnDiscoverable);
             btnFindUnpairedDevices = FindViewById<Button>(Resource.Id.btnFindUnpairedDevices);
             btnFindPairedDevices = FindViewById<Button>(Resource.Id.btnFindPairedDevices);
+            lvDevicesUnpaired = FindViewById<ListView>(Resource.Id.lvDevicesUnpaired);
 
-            //Inicializando Bluetooth
-            bluetooth = new MX.Digitalcoaster.Socketexample.Xamarin.Bluetooth();
-            bluetooth.Initializate(this, this);
+            MX.Digitalcoaster.Socketexample.Xamarin.Bluetooth bluetooth = new MX.Digitalcoaster.Socketexample.Xamarin.Bluetooth();
+            bluetooth.Initializate(this, this, this, this);
 
-            btnOnOff.Click += delegate {
+
+            btnOnOff.Click += delegate
+            {
                 bluetooth.OnOff();
             };
 
-            btnDiscoverable.Click += delegate {
+            btnDiscoverable.Click += delegate
+            {
                 bluetooth.Discoverable();
             };
 
-            btnFindUnpairedDevices.Click += delegate {
+            btnFindUnpairedDevices.Click += delegate
+            {
                 bluetooth.FindUnpairedDevices();
             };
 
-            btnFindPairedDevices.Click += delegate {
+            btnFindPairedDevices.Click += delegate
+            {
                 bluetooth.FindPairedDevices();
             };
 
-        }
 
-        public void FinishBluetoothConnection(bool p0)
-        {
-            if (p0)
-            {
-                var intent = new Intent(this, typeof(Comandos));
-                StartActivity(intent);
-            }
-            else
-            {
-                Toast.MakeText(Application.Context, "Error de conexion", ToastLength.Short).Show();
-            }
         }
     }
+        
 }

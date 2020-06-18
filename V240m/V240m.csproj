@@ -47,7 +47,7 @@
   <ItemGroup>
     <None Include="Jars\AboutJars.txt" />
     <None Include="Additions\AboutAdditions.txt" />
-    <LibraryProjectZip Include="Jars\socketexample-release.aar">
+    <LibraryProjectZip Include="Jars\BWMulltipagos_api.aar">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </LibraryProjectZip>
   </ItemGroup>
